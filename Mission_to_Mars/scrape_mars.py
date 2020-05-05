@@ -25,7 +25,7 @@ def scrape():
     # Featured image
     url2 = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(url2)
-    time.sleep(5)
+    time.sleep(8)
     browser.click_link_by_partial_text('FULL IMAGE')
     browser.click_link_by_partial_text('more info')
     html = browser.html
@@ -42,7 +42,6 @@ def scrape():
     html = browser.html
     soup3 = BeautifulSoup(html, 'html.parser')
     weather = soup3.find("span", text=pattern).text
-    mars_weather = print(weather)
 
     # Mars Facts
     url4 = 'https://space-facts.com/mars/'
@@ -74,7 +73,7 @@ def scrape():
         'news_title': news_title,
         'news_p': news_p,
         'featured_image_url': featured_image_url,
-        'mars_weather': mars_weather,
+        'weather': weather,
         'mars_facts': table,
         'hemisphere_image_url': hemisphere_image_url
     }

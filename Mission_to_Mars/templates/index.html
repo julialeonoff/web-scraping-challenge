@@ -13,20 +13,84 @@
     <div class="container">
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
-            <p><a class="btn btn-primary btn-lg" href="/scraper" role="button">Scrape New Data</a></p>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <h2>Latest Mars News</h2>
-            <br>
-            <p><span>{{ mars_data }}</span></p>
-            <br>
-            <p>{{ mars_data }}</p>
+            <div class="col-xs-12">
+                <h2><strong>Latest Mars News</strong></h2>
+                <h4><strong>{{ mars_data.news_title }}</strong></h4>
+                <p>{{ mars_data.news_p }}</p>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class=""
+    <div class="container" style="padding-bottom: 50px">
+        <div class='row'>
+            <div class='col-md-8'>
+                <h3><strong>Featured Mars Image</strong></h3>
+                <img src="{{ mars_data.featured_image_url }}"  style='width: 100%; height: 689px'  alt="Mars">
+            </div>
+
+            <div class='col-md-4'>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4><strong>Current Weather on Mars</strong></h4>
+                                <p>{{mars_data.weather}}</p>
+                                <hr class="my-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4><strong>Mars Facts</strong></h4>
+                                <p>{{mars_data.mars_facts | safe}}</p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="container"  style="padding-bottom: 100px">
+        <h3 class="text-center"><strong>Mars Hemispheres</strong></h3>
+		<br>
+		<div class="row">
+			<div class="col-xs-6 col-md-6">
+				<img src="{{ mars_data.hemisphere_image_url[0]['image_url'] }}" style="width:100%" class="img-responsive"
+					alt="{{ mars_data.hemisphere_image_url[0]['title'] }}">
+				<h4><strong>{{mars_data.hemisphere_image_url[0]['title']}}</strong></h4>
+​           </div>
+			<div class="col-xs-6 col-md-6">
+				<img src="{{ mars_data.hemisphere_image_url[1]['image_url'] }}" style="width:100%" class="img-responsive"
+					alt="{{ mars_data.hemisphere_image_url[1]['title'] }}">
+				<h4><strong>{{mars_data.hemisphere_image_url[1]['title']}}</strong></h4>
+			</div>
+		</div>
+​
+		<div class="row">
+			<div class="col-xs-6 col-md-6">
+				<img src="{{ mars_data.hemisphere_image_url[2]['image_url'] }}" style="width:100%" class="img-responsive"
+					alt="{{ mars_data.hemisphere_image_url[2]['title'] }}">
+				<h4><strong>{{mars_data.hemisphere_image_url[2]['title']}}</strong></h4>
+			</div>
+			<div class="col-xs-6 col-md-6">
+				<img src="{{ mars_data.hemisphere_image_url[3]['image_url'] }}" style="width:100%" class="img-responsive"
+					alt="{{ mars_data.hemisphere_image_url[3]['title'] }}">
+				<h4><strong>{{mars_data.hemisphere_image_url[3]['title']}}</strong></h4>
+			</div>
+		</div>
+    </div>
+
+</body>
+
+</html>
